@@ -1,0 +1,342 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Lista de Exames - Laboratório Anacli Feira de Santana</title>
+  <link rel="stylesheet" href="main.d03ec796.css" />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700|Saira:300,400,500,600,700&display=swap" />
+  
+<style>
+
+  #suggestions {
+    border: 3px solid #000;
+    border-top: none;
+    max-height: 200px;
+    overflow-y: auto;
+    background: white;
+    position: absolute;
+    width: 100%;
+    z-index: 1000;
+    border-radius: 0 0 8px 8px;
+  }
+
+  #suggestions a {
+    display: block;
+    padding: 8px 12px;
+    color: #572580;
+    text-decoration: none;
+    border-bottom: 3px solid #000;
+  }
+
+  #suggestions a:hover {
+    background-color: #f3f3f3;
+  }
+
+  .search-wrapper {
+    position: relative;
+  }
+
+  .header-bg {
+    background: url("img/bg.png") no-repeat center center;
+    height: 105px; width:100% !important;
+    background-size: cover; /* ou 'contain', conforme desejado */
+  }
+  
+  .blocos{margin-left:-20px;}
+  .blocos h3{margin-left:25px;}
+  @media screen and (max-width: 768px) {
+  /* CSS rules to apply for screens with a maximum width of 768px */
+  .blocos{margin-left:-33px;}
+}
+  
+     
+    .app-header-container {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 12px 16px;
+      background-color: #ffffff;
+      border-bottom: 1px solid #eee;
+    }
+
+    /* Botão de menu hambúrguer */
+    .menu-toggle-header {
+      background: none;
+      border: none;
+      cursor: pointer;
+      padding: 8px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      gap: 4px;
+    }
+
+    .menu-toggle-header .bar {
+      width: 24px;
+      height: 3px;
+      background-color: green;
+      border-radius: 2px;
+      transition: all 0.3s ease;
+    }
+
+    /* Sempre visível */
+    .visible-xs {
+      display: flex;
+    }
+
+    /* Estilo da UL com botão de resultados */
+    .app-header-container ul {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+    }
+
+    .app-header-container li a {
+      display: inline-block;
+      padding: 10px 16px;
+      background-color: #572580;
+      color: white;
+      text-decoration: none;
+      border-radius: 6px;
+      font-weight: 600;
+      transition: background-color 0.3s ease;
+    }
+
+    .app-header-container li a:hover {
+      background-color: #6d31a6;
+    }
+	
+	/* FAQ */
+.exame-faq {
+  margin-top: 40px;
+}
+
+.exame-faq h2 {
+  font-size: 30px;
+  color: #572580;
+  margin-bottom: 20px;
+}
+
+/* Itens da FAQ */
+.faq-item {
+  border-bottom: 2px solid #eee;
+  font-size:25px;
+  padding: 10px 0;
+  cursor:pointer;
+  
+}
+
+.faq-item button.pergunta {
+  background: none;
+  border: none;
+  font-size: 25px;
+  font-weight: bold;
+  color: #444;
+  cursor: pointer !important;
+  width: 100%;
+  
+  text-align: left;
+  padding: 10px 0;
+  transition: color 0.3s;
+}
+
+.faq-item button.pergunta:hover {
+  color: #572580;
+  cursor:pointer;
+}
+
+.faq-item .resposta {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.3s ease;
+  color: #555;
+  font-size: 15px;
+  line-height: 1.5;
+  padding-left: 10px;
+  cursor:auto;
+}
+
+/* Quando ativo */
+.faq-item.ativo .resposta {
+  max-height: 500px; /* espaço suficiente para qualquer resposta */
+  margin-top: 8px;
+}
+
+
+  </style>
+</head>
+<body>
+
+  <div class="app-header-container">
+   
+
+    <ul>
+      <li>
+        <a href="http://anacli.ddns.com.br:8090/web_laudos" style="background:yellowgreen;">Resultados de Exames</a>
+      </li>
+    </ul>
+  </div>
+
+	<div align="center"><a href="index.html"><img src="logo.png" style="padding-top:20px; background-color:yellowgreen; background: no-repeat url("img/bgz.png");" width="150"></a>
+	
+	<br><br>
+	<h1 style="color:green;  padding-left:45px;">Exames Laboratoriais em Feira de Santana</h1>
+	
+	</div>
+	
+	
+
+<div style="background:yellowgreen; margin-top:-40px;" align="center">
+
+
+
+  <div class="container separate-base-top-double">
+
+   
+  <div class="container separate-base-top-double blocos">
+<br><br>
+<h3>Faça o seu orçamento agora:</h3>
+    <!-- Campo de busca com sugestões -->
+    <div class="row row-center separate-medium">
+      <div class="xs-12 sm-10 md-8 search-wrapper ">
+        <input id="searchInput" type="text" placeholder="Buscar exames, testes ou check-ups"
+          class="font-text text-size-16"
+          style="width: 100%; padding: 12px 16px; border: 1px solid #ccc; border-radius: 8px;" />
+        <div id="suggestions"></div>
+      </div>
+    </div>
+
+	
+
+    <!-- Blocos de exames - Aqui viria seu conteúdo copiado do HTML -->
+    <div id="examContent">
+      <!-- ... conteúdo dos cards de exames ... -->
+    </div>
+
+  </div>
+  
+
+
+  <!-- Script de busca com sugestões -->
+  <script>
+    const searchInput = document.getElementById('searchInput');
+    const suggestionsBox = document.getElementById('suggestions');
+
+    const exames = [
+      { name: "Colesterol Total", url: "/exames/colesterol-total" },
+      { name: "Glicose", url: "/exames/glicose" },
+      { name: "Hemograma Completo", url: "/exames/hemograma" },
+      { name: "TSH – Hormônio Tireoestimulante", url: "/exames/hormonio-tireoestimulante-tsh" },
+      { name: "Vitamina D-25 Hidroxi", url: "/exames/vitamina-d-25-hidroxi" },
+      { name: "Teste de Gravidez – Beta HCG", url: "/testes/hcg-gonadotrofina-corionica-beta-soro" },
+      { name: "Teste de Coronavírus – Antígeno", url: "/testes/teste-de-coronavirus-antigeno" },
+      { name: "Check-up do Diabetes", url: "/check-ups/check-up-para-controle-do-diabetes" },
+      { name: "Check-up da Mulher até 45 anos", url: "/check-ups/check-up-para-mulher-ate-45-anos" },
+      { name: "Mamografia Digital", url: "/imagens/mamografia-digital" },
+      { name: "Ecocardiograma com Doppler", url: "/imagens/ecocardiograma-com-doppler" },
+      { name: "Densitometria Óssea de Corpo Inteiro", url: "/imagens/densitometria-ossea-de-corpo-inteiro" }
+      // Adicione mais exames aqui
+    ];
+
+    searchInput.addEventListener('input', () => {
+      const value = searchInput.value.toLowerCase();
+      suggestionsBox.innerHTML = '';
+
+      if (value.length < 2) return;
+
+      const filtered = exames.filter(exame => exame.name.toLowerCase().includes(value));
+      if (filtered.length === 0) {
+        suggestionsBox.innerHTML = `<div style="padding: 10px; color: #999;">Nenhum resultado encontrado</div>`;
+        return;
+      }
+
+      filtered.forEach(exame => {
+        const link = document.createElement('a');
+        link.href = exame.url;
+        link.textContent = exame.name;
+        suggestionsBox.appendChild(link);
+      });
+    });
+
+    document.addEventListener('click', function (event) {
+      if (!event.target.closest('.search-wrapper')) {
+        suggestionsBox.innerHTML = '';
+      }
+    });
+  </script>
+
+	
+	<body>
+
+  <div class="exame-container" style="background:#fff; border-radius:20px; padding:5px 20px 5px 20px; margin-left:10px; max-width:800px;">
+    <br><br><h1 style="color:green;">Hemograma Completo</h1>
+    
+    <div class="exame-descricao" style="max-width:800px;">
+      O hemograma completo é um dos exames laboratoriais mais solicitados pelos médicos. Ele avalia os principais componentes do sangue, como glóbulos vermelhos, glóbulos brancos e plaquetas, sendo útil para detectar infecções, anemias e outras condições hematológicas.
+    </div><br>
+
+    <div class="exame-faq">
+      <h2 style="color:green;">Perguntas Frequentes</h2>
+
+       <div class="faq-item">
+    <div class="pergunta">Preciso estar em jejum para fazer o hemograma?</div>
+    <div class="resposta">Não é obrigatório, mas em alguns casos o médico pode solicitar jejum de 4 horas. Sempre siga a orientação do profissional de saúde.</div>
+  </div>
+
+  <div class="faq-item">
+    <div class="pergunta">Quanto tempo demora para sair o resultado?</div>
+    <div class="resposta">Geralmente o resultado é liberado em até 24 horas úteis após a coleta do sangue.</div>
+  </div>
+
+  <div class="faq-item">
+    <div class="pergunta">O hemograma detecta infecções?</div>
+    <div class="resposta">Sim. Alterações nos leucócitos (glóbulos brancos) podem indicar infecções ou inflamações.</div>
+  </div>
+
+  <div class="faq-item">
+    <div class="pergunta">Quais são as formas de pagamento aceitas?</div>
+    <div class="resposta">Aceitamos dinheiro, cartões de crédito e débito (Visa, MasterCard, Elo), além de pix e convênios.</div>
+  </div>
+
+  <div class="faq-item">
+    <div class="pergunta">Onde fica o laboratório?</div>
+    <div class="resposta">Estamos localizados na Rua Aristides Novis, 288 - Kalilândia - Feira de Santana, BA.</div>
+  </div>
+
+  <div class="faq-item">
+    <div class="pergunta">É necessário agendar para fazer o hemograma?</div>
+    <div class="resposta">Não. O exame pode ser feito por ordem de chegada durante nosso horário de atendimento.</div>
+  </div>
+</div>
+    </div><br><br>
+  </div>
+  
+   <br><br>
+  
+	 <script>
+    // Script sanfona
+    document.querySelectorAll('.faq-item .pergunta').forEach(botao => {
+      botao.addEventListener('click', () => {
+        const item = botao.parentElement;
+        const todos = document.querySelectorAll('.faq-item');
+        todos.forEach(i => {
+          if (i !== item) i.classList.remove('ativo');
+        });
+        item.classList.toggle('ativo');
+      });
+    });
+  </script>
+
+
+</body>
+   
+
+  </div>
+  
+  </div>
+  
+ 
+
+</body>
+</html>

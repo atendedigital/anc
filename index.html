@@ -1,0 +1,357 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Lista de Exames - Lab. Anácli - Feira de Santana</title>
+  <link rel="stylesheet" href="main.d03ec796.css" />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700|Saira:300,400,500,600,700&display=swap" />
+  
+<style>
+
+#whatsapp-popup {
+  display: none;
+  position: fixed;
+  bottom: 30px;
+  left: 30px;
+  background: #25d366;
+  color: white;
+  padding: 14px 18px;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.3);
+  font-size: 16px;
+  z-index: 999;
+}
+
+.botao-selecionar {
+  
+  color: #fff;
+  border: none;
+  
+  padding: 8px 0px;
+  
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 14px;
+}
+
+.botao-selecionar:hover {
+  padding-left:10px;
+}
+
+  #suggestions {
+    border: 1px solid #ccc;
+    border-top: none;
+    max-height: 200px;
+    overflow-y: auto;
+    background: white;
+    position: absolute;
+    width: 100%;
+    z-index: 1000;
+    border-radius: 0 0 8px 8px;
+  }
+
+  #suggestions a {
+    display: block;
+    padding: 8px 12px;
+    color: #572580;
+    text-decoration: none;
+    border-bottom: 1px solid #eee;
+  }
+
+  #suggestions a:hover {
+    background-color: #f3f3f3;
+  }
+
+  .search-wrapper {
+    position: relative;
+  }
+
+  .header-bg {
+    background: url("img/bg.png") no-repeat center center;
+    height: 105px; width:100% !important;
+    background-size: cover; /* ou 'contain', conforme desejado */
+  }
+  
+  .blocos{margin-left:-20px;}
+  .blocos h3{margin-left:25px;}
+  @media screen and (max-width: 768px) {
+  /* CSS rules to apply for screens with a maximum width of 768px */
+  .blocos{margin-left:-33px;}
+}
+  
+     /* Container do topo */
+    .app-header-container {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 12px 16px;
+      background-color: #ffffff;
+      border-bottom: 1px solid #eee;
+    }
+
+    /* Botão de menu hambúrguer */
+    .menu-toggle-header {
+      background: none;
+      border: none;
+      cursor: pointer;
+      padding: 8px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      gap: 4px;
+    }
+
+    .menu-toggle-header .bar {
+      width: 24px;
+      height: 3px;
+      background-color: #572580;
+      border-radius: 2px;
+      transition: all 0.3s ease;
+    }
+
+    /* Sempre visível */
+    .visible-xs {
+      display: flex;
+    }
+
+    /* Estilo da UL com botão de resultados */
+    .app-header-container ul {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+    }
+
+    .app-header-container li a {
+      display: inline-block;
+      padding: 10px 16px;
+      background-color: #572580;
+      color: white;
+      text-decoration: none;
+      border-radius: 6px;
+      font-weight: 600;
+      transition: background-color 0.3s ease;
+    }
+
+    .app-header-container li a:hover {
+      background-color: #6d31a6;
+    }
+	
+	
+  </style>
+</head>
+<body>
+
+  <div class="app-header-container">
+   
+
+    <ul>
+      <li>
+        <a href="http://anacli.ddns.com.br:8090/web_laudos" style="background:yellowgreen;">Resultados de Exames</a>
+      </li>
+    </ul>
+  </div>
+
+	<div align="center"><a href="index.html"><img src="logo.png" style="padding-top:20px; background-color:yellowgreen; background: no-repeat url("img/bgz.png");" width="150"></a>
+	
+	<br><br>
+	<h1 style="color:green;  padding-left:45px;">Exames Laboratoriais em Feira de Santana</h1>
+	
+	</div>
+	
+	
+
+<div style="background:yellowgreen; margin-top:-40px;" align="center">
+
+
+
+  <div class="container separate-base-top-double">
+
+   
+  <div class="container separate-base-top-double blocos">
+<br><br>
+<h3>Faça o seu orçamento agora:</h3>
+    <!-- Campo de busca com sugestões -->
+    <div class="row row-center separate-medium">
+      <div class="xs-12 sm-10 md-8 search-wrapper ">
+        <input id="searchInput" type="text" placeholder="Buscar exames, testes ou check-ups"
+          class="font-text text-size-16"
+          style="width: 100%; padding: 12px 16px; border: 1px solid #ccc; border-radius: 8px;" />
+        <div id="suggestions"></div>
+      </div>
+    </div>
+
+	
+
+    <!-- Blocos de exames - Aqui viria seu conteúdo copiado do HTML -->
+    <div id="examContent">
+      <!-- ... conteúdo dos cards de exames ... -->
+    </div>
+
+  </div>
+  
+
+
+  <!-- Script de busca com sugestões -->
+  <script>
+    const searchInput = document.getElementById('searchInput');
+    const suggestionsBox = document.getElementById('suggestions');
+
+    const exames = [
+      { name: "Colesterol Total", url: "/exames/colesterol-total" },
+      { name: "Glicose", url: "/exames/glicose" },
+      { name: "Hemograma Completo", url: "hemograma.html" },
+      { name: "TSH – Hormônio Tireoestimulante", url: "/exames/hormonio-tireoestimulante-tsh" },
+      { name: "Vitamina D-25 Hidroxi", url: "/exames/vitamina-d-25-hidroxi" },
+      { name: "Teste de Gravidez – Beta HCG", url: "/testes/hcg-gonadotrofina-corionica-beta-soro" },
+      { name: "Teste de Coronavírus – Antígeno", url: "/testes/teste-de-coronavirus-antigeno" },
+      { name: "Check-up do Diabetes", url: "diabetes.html" },
+      { name: "Check-up da Mulher até 45 anos", url: "/check-ups/check-up-para-mulher-ate-45-anos" },
+      { name: "Mamografia Digital", url: "/imagens/mamografia-digital" },
+      { name: "Ecocardiograma com Doppler", url: "/imagens/ecocardiograma-com-doppler" },
+      { name: "Densitometria Óssea de Corpo Inteiro", url: "/imagens/densitometria-ossea-de-corpo-inteiro" }
+      // Adicione mais exames aqui
+    ];
+
+    searchInput.addEventListener('input', () => {
+      const value = searchInput.value.toLowerCase();
+      suggestionsBox.innerHTML = '';
+
+      if (value.length < 2) return;
+
+      const filtered = exames.filter(exame => exame.name.toLowerCase().includes(value));
+      if (filtered.length === 0) {
+        suggestionsBox.innerHTML = `<div style="padding: 10px; color: #999;">Nenhum resultado encontrado</div>`;
+        return;
+      }
+
+      filtered.forEach(exame => {
+        const link = document.createElement('a');
+        link.href = exame.url;
+        link.textContent = exame.name;
+        suggestionsBox.appendChild(link);
+      });
+    });
+
+    document.addEventListener('click', function (event) {
+      if (!event.target.closest('.search-wrapper')) {
+        suggestionsBox.innerHTML = '';
+      }
+    });
+  </script>
+
+	
+	
+	<div class="row row-center separate-medium" style="margin-top:-30px;">
+      <div class="xs-12 sm-10 md-8">
+        <div class="card-category" style="box-shadow: 0 2px 6px rgba(0,0,0,0.1); border-radius: 16px; overflow: hidden;">
+          <div class="category-card-title _purple text-center" style="background-color: yellowgreen; padding: 16px 0;">
+			
+			<p class="h3" style="color:#fff;">Selecione os exames desejados</p>
+
+          </div>
+          <div class="card-content-list" style="padding: 16px;">
+            <table style="width: 100%;">
+              <tbody>
+                <tr>
+    			  <td>
+				  <a class="botao-selecionar" data-exame="Colesterol Total">Colesterol Total</a>
+				
+				  <td class="text-right"><a class="text-purple text-display">R$ 8,00</a></td>
+				</td>
+                </tr>
+                <tr>
+                  <td><a class="botao-selecionar" data-exame="Glicose">Glicose</a></td>
+                  <td class="text-right"><a class="text-purple text-display">R$ 10,00</a></td>
+                </tr>
+                <tr>
+                  <td><a class="botao-selecionar" data-exame="Hemograma Completo">Hemograma Completo</a></td>
+                  <td class="text-right"><a class="text-purple text-display">R$ 14,00</a></td>
+                </tr>
+                <tr>
+                  <td><a  class="botao-selecionar" data-exame="TSH - Hormônio Tireoestimulante" style="font-size:12px; width:100%;">TSH – Hormônio Tireoestimulante</a></td>
+                  <td class="text-right"><a class="text-purple text-display">R$ 28,00</a></td>
+                </tr>
+                <tr>
+                  <td><a  class="botao-selecionar" data-exame="Vitamina D-25 Hidroxi">Vitamina D-25 Hidroxi</a></td>
+                  <td class="text-right"><a class="text-purple text-display">R$ 79,00</a></td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <div class="text-center" style="padding: 16px;">
+            <a href="/exames"><p class="uppercase text-purple text-bold">Ver todos os exames</p></a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Repita este bloco para outras categorias, como Testes ou Check-ups -->
+
+  </div>
+  
+  </div>
+  
+ <!-- Botão flutuante de agendamento -->
+<a id="agendar-btn" href="#" target="_blank" class="agendar" style="
+  position: fixed;
+  bottom: 30px;
+  right: 30px;
+  padding: 14px 22px;
+  background-color: #25d366;
+  color: white;
+  border-radius: 30px;
+  font-weight: bold;
+  text-decoration: none;
+  font-size: 16px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.3);
+  z-index: 999;
+  display: none;
+">
+  Agendar via WhatsApp
+</a>
+
+<script>
+  const examesSelecionados = new Set();
+  const botaoAgendar = document.getElementById("agendar-btn");
+  const numeroWhatsapp = "557530300030"; // Substitua pelo número do laboratório
+
+  function montarMensagem() {
+    const exames = Array.from(examesSelecionados);
+    if (exames.length === 0) return "";
+
+    if (exames.length === 1) {
+      return `Olá, gostaria de agendar: ${exames[0]}`;
+    }
+
+    const todosMenosUltimo = exames.slice(0, -1).join(", ");
+    const ultimo = exames[exames.length - 1];
+    return `Olá, gostaria de agendar: ${todosMenosUltimo} e ${ultimo}`;
+  }
+
+  document.querySelectorAll(".botao-selecionar").forEach(botao => {
+    botao.addEventListener("click", () => {
+      const exame = botao.getAttribute("data-exame");
+
+      if (!examesSelecionados.has(exame)) {
+        examesSelecionados.add(exame);
+
+        botao.style.backgroundColor = "yellowgreen";
+		botao.style.color = "white";
+		botao.style.paddingLeft = "8px";
+      }
+
+      const mensagem = montarMensagem();
+      const url = `https://wa.me/${numeroWhatsapp}?text=${encodeURIComponent(mensagem)}`;
+      botaoAgendar.href = url;
+
+      if (examesSelecionados.size > 0) {
+        botaoAgendar.style.display = "inline-block";
+      }
+    });
+  });
+</script>
+
+
+</body>
+</html>
